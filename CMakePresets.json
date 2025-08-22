@@ -1,0 +1,56 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 50,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "windows",
+      "displayName": "Windows configuration",
+      "description": "This build is only available on Windows",
+      "cmakeExecutable": "C:/Program Files/CMake/bin/cmake.exe",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "installDir": "${sourceDir}/install/${presetName}",
+      "hidden": true,
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "inherits": "windows",
+      "name": "win32-msvc16-x64-ninja-debug",
+      "displayName": "Windows MSVC x64 (Ninja) Debug",
+      "description": "Using MSVC x64 compiler with \"Ninja\" generator on Windows - Debug",
+      "generator": "Ninja",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "cl.exe",
+        "CMAKE_CXX_COMPILER": "cl.exe",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "inherits": "windows",
+      "name": "win32-msvc17-x64-ninja-release",
+      "displayName": "Windows MSVC x64 (Ninja) Release",
+      "description": "Using MSVC x64 compiler with \"Ninja\" generator on Windows - Release",
+      "generator": "Ninja",
+      "architecture": {
+        "value": "x86",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "cl.exe",
+        "CMAKE_CXX_COMPILER": "cl.exe",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ]
+}
