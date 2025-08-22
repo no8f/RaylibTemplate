@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 4.0)
 
-project(template)
+project(template VERSION 0.0.1 DESCRIPTION "A Template")
 
 # Provide compile commands for clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -19,3 +19,27 @@ include(cmake/CPM.cmake)
 CPMAddPackage("gh:raysan5/raylib#5.5")
 
 add_subdirectory(src)
+
+include(GNUInstallDirs)
+install(TARGETS ${PROJECT_NAME}
+    BUNDLE DESTINATION .
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+
+if(WIN32)
+
+set(CPACK_GENERATOR "INNOSETUP")
+
+set(CPACK_PACKAGE_VENDOR "no8f") # Replace
+set(CPACK_PACKAGE_INSTALL_DIRECTORY ${PROJECT_NAME})
+set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_SOURCE_DIR}/LICENSE)
+set(CPACK_PACKAGE_EXECUTABLES ${PROJECT_NAME};${PROJECT_NAME})
+
+set(CPACK_INNOSETUP_USE_MODERN_WIZARD ON)
+set(CPACK_INNOSETUP_ICON_FILE "${PROJECT_SOURCE_DIR}/ressources/raylib.ico") # Change to a proper icon
+set(CPACK_INNOSETUP_RUN_EXECUTABLES ${PROJECT_NAME})
+
+include(CPack)
+
+endif()
