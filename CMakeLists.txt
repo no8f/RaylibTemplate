@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 4.0)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(template VERSION 0.0.1 DESCRIPTION "A Template")
 
@@ -17,6 +19,7 @@ add_custom_target(export-compile-commands ALL
 include(cmake/CPM.cmake)
 
 CPMAddPackage("gh:raysan5/raylib#5.5")
+CPMAddPackage("gh:skypjack/entt@3.15.0")
 
 add_subdirectory(src)
 
