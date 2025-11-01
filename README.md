@@ -13,7 +13,6 @@
 
 ## Prerequisites
 - CMake installed
-- MSVC installed
 - When using cpack
     - Innosetup installed
 
