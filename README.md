@@ -8,9 +8,6 @@
 > [!NOTE]
 > Mainly for personal use, I don't stop anyone from using it, but I don't guarantee that it will work.
 
-> [!NOTE]
-> I will only do this for windows as my uni forces windows
-
 ## Prerequisites
 - CMake installed
 - When using cpack
